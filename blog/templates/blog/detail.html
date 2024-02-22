@@ -1,0 +1,58 @@
+{% extends "base_blog.html" %}
+
+{% block page_title %}
+    <h2 class="text-3xl font-bold mb-4">
+        {{ post.title }}
+    </h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <small>
+        </small>
+    <p class="mb-4">{{ post.content | linebreaks }}</p>
+    <br>
+    <div class="container mx-auto">
+    <div class="grid grid-cols-3 gap-4">
+    {% for media in media_files %}
+{#      {% with format=formats.getmedia.id|default:'' %}#}
+        {% if media.media_type == 'image' %}
+            <img class="w-full object-cover" src="{{ media.file.url }}" alt="Image">
+        {% elif media.media_type == 'video' %}
+          <video class="w-full" controls>
+            <source src="{{ media.file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% else %}
+          <p>Unsupported media type: {{ media.file.name }}</p>
+        {% endif %}
+{#      {% endwith %}#}
+    {% endfor %}
+    </div>
+    </div>
+    <br>
+    <h3>Leave a comment:</h3>
+    <form method="post" class="comment-form">
+        {% csrf_token %}
+        <fieldset class="author-field">
+            <label for="id_author">Your Name (required):</label>
+            <input type="text" name="author" id="id_author" placeholder="Enter your name" required>
+        </fieldset>
+        <fieldset class="body-field">
+            <label for="id_body">Comment (required):</label>
+            <textarea name="body" id="id_body" rows="4" placeholder="Share your thoughts..." required></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+    <br>
+    <h3>Comments:</h3>
+    <div class="flex flex-col gap-4">
+        {% for comment in comments %}
+            <div class="border rounded p-3 mb-4">
+                <p>
+                    <span class="font-bold text-blue-500">{{ comment.user }}</span> on {{ comment.created_at.date }} wrote:
+                </p>
+                <p>{{ comment.content | linebreaks }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock page_content %}

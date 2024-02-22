@@ -1,0 +1,43 @@
+{% extends "base_store.html" %}
+
+{#{% block page_title %}#}
+{#    <h2>Blog Posts</h2>#}
+{#{% endblock page_title %}#}
+
+{% block page_content %}
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold text-blue-500">Products</h2>
+        <form class="inline-flex">
+            <label>
+                <input type="text" placeholder="Search posts..." class="rounded px-2 py-1">
+            </label>
+            <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">Search</button>
+        </form>
+    </div>
+    {% block products %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% for product in products %}
+                <article class="mb-4">
+                    <h3 class="text-2xl font-bold mb-2">
+                        <a href="{% url 'product_detail' product.pk %}" class="text-blue-500 hover:text-blue-700">
+                            {{ product.title }}
+                        </a>
+                    </h3>
+                    <div class="flex items-center flex-wrap">
+                        <small class="text-gray-500 mr-2">{{ product.created_at.date }}</small>
+                        <small class="ml-2">
+                            Categories:
+                            {% for category in product.category.all %}
+                                <a href="{% url 'blog_category' category.name %}" class="rounded px-2 py-1 text-gray-800 bg-gray-200 hover:bg-gray-300 ml-2">
+                                    {{ category.name }}
+                                </a>
+                            {% endfor %}
+                        </small>
+                    </div>
+{#                    <p class="whitespace-pre-line">{{ product.description | slice:":400" }}...</p>#}
+                    <p class="whitespace-pre-line">{{ product.price}}$</p>
+                </article>
+            {% endfor %}
+        </div>
+    {% endblock products %}
+{% endblock page_content %}

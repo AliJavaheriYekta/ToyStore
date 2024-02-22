@@ -1,0 +1,49 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Auth",
+    "dateExported": "2024-02-22T18:20:55.876Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "8e1cff93-0750-4738-91ac-8d5d409098c9",
+            "colId": "5b8e54db-aaf5-4e3b-bf4c-64dd1e89206c",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://127.0.0.1:8000/auth/login/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-22T17:41:57.074Z",
+            "modified": "2024-02-22T17:41:57.074Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"AliYekta_2005\",\n  \"password\": \"Test@1234\"\n}",
+                "form": []
+            },
+            "tests": [],
+            "docs": "## Login as a User\n\n### URL format: \n    http://{host}{:port}/login\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"username\": {username},\n  \"password\": {password}\n}\n```\n\n### Authentication: \n - Not Needed \n"
+        },
+        {
+            "_id": "295ec33b-487e-4e57-837a-778ca387e72c",
+            "colId": "5b8e54db-aaf5-4e3b-bf4c-64dd1e89206c",
+            "containerId": "",
+            "name": "Register",
+            "url": "http://127.0.0.1:8000/auth/register/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-22T17:42:03.549Z",
+            "modified": "2024-02-22T17:42:03.549Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"AliYekta_2005\",\n  \"password\": \"Test@1234\"\n}",
+                "form": []
+            },
+            "tests": [],
+            "docs": "## Register A new User\n\n### URL format: \n    http://{host}{:port}/register\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"username\": {username},\n  \"password\": {password}\n}\n```\n\n### Authentication: \n - Not Needed \n"
+        }
+    ]
+}

@@ -1,0 +1,293 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Blog",
+    "dateExported": "2024-02-22T18:20:17.258Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "651b531e-83a2-42e4-99cc-5123c4d7288c",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Add Category",
+            "url": "http://127.0.0.1:8000/blog/api/category/",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-02-11T16:14:10.155Z",
+            "modified": "2024-02-22T18:18:52.793Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Surfing\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Add A new Category\n\n### URL format: \n    http://{host}{:port}/api/category/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"name\": {name}\n}\n```\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "c1d344cd-4bfe-42db-91f0-20b8bd629c05",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Delete a Category",
+            "url": "http://127.0.0.1:8000/blog/api/category/LALA/",
+            "method": "DELETE",
+            "sortNum": 37500,
+            "created": "2024-02-11T17:24:00.293Z",
+            "modified": "2024-02-22T18:18:59.744Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Delete a Category\n\n### URL format: \n    http://{host}{:port}/api/category/{category name}/\n\n### Method:\n>**DELETE**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "c84a68b0-ca54-48aa-8cdf-ccd342c2e619",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Get All Posts",
+            "url": "http://127.0.0.1:8000/blog/api/post/",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-11T16:37:34.969Z",
+            "modified": "2024-02-22T18:19:05.114Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Get all Posts\n\n### URL format: \n    http://{host}{:port}/api/post/\n\n### Method:\n>**GET**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "736eeec7-72d9-4909-9ea4-011f44f4a6c1",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Get a Specific Post",
+            "url": "http://127.0.0.1:8000/blog/api/post/1/",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-11T16:37:43.098Z",
+            "modified": "2024-02-22T18:19:09.368Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Get a Post based on it's id\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/\n\n### Method:\n>**GET**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "2dceaf62-997a-42dc-ad9a-c0ed149dd1f9",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Posts by Category",
+            "url": "http://127.0.0.1:8000/blog/api/category/Different/",
+            "method": "GET",
+            "sortNum": 55000,
+            "created": "2024-02-11T17:24:06.534Z",
+            "modified": "2024-02-22T18:19:14.178Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Posts by Category\n\n### URL format: \n    http://{host}{:port}/api/category/{category name}/\n\n### Method:\n>**GET**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "6ab39fa3-4209-4010-a854-bef79a02c6b7",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Create a Post",
+            "url": "http://127.0.0.1:8000/blog/api/post/",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-02-11T16:37:49.547Z",
+            "modified": "2024-02-22T18:19:19.554Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"My post\",\n  \"content\": \"This is my post content\",\n  \"category\": [1, 2]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Create a new Post\n\n### URL format: \n    http://{host}{:port}/api/post/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"title\": {title},\n  \"content\": {content},\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***"
+        },
+        {
+            "_id": "89b9faae-bc87-4111-b945-8acedb919205",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Delete A Post",
+            "url": "http://127.0.0.1:8000/blog/api/post/19/",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-02-11T16:37:58.580Z",
+            "modified": "2024-02-22T18:19:25.501Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Deleting a Post based on it's id\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/\n\n### Method:\n>**DELETE**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "7efe2d55-a6c3-486e-91dc-4a32e5afba6b",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Parially Update a Post",
+            "url": "http://127.0.0.1:8000/blog/api/posts/20/edit",
+            "method": "PATCH",
+            "sortNum": 80000,
+            "created": "2024-02-11T16:38:07.854Z",
+            "modified": "2024-02-22T18:19:40.319Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"category\": [2,3,4]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Partially update a Post\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/edit\n\n### Method:\n>**PATCH**\n\n### Body (JSON):\n```\n{\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***"
+        },
+        {
+            "_id": "1f03b5a5-d754-4509-8e24-59dd3f2bb3b6",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Update a Post",
+            "url": "http://127.0.0.1:8000/blog/api/posts/20/edit",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-02-11T16:38:24.697Z",
+            "modified": "2024-02-22T18:19:45.807Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categories\": [2, 3]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Update a Post\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/edit\n\n### Method:\n>**PUT**\n\n### Body (JSON):\n```\n{\n  \"title\": {title},\n  \"content\": {content},\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "bffc7838-bb2f-4485-92f4-1fb8bbb4174c",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Add Comment",
+            "url": "http://127.0.0.1:8000/blog/api/comment/",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-11T18:31:33.141Z",
+            "modified": "2024-02-22T18:19:52.665Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"content\": \"Keep up the good job!\",\n  \"post_id\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Add a Comment to a Post\n\n### URL format: \n    http://{host}{:port}/api/comment/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"content\": {content},\n   \"post_id\": {post id}\n}\n```\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "c8d67391-8f8e-4706-81c5-cd904754ad19",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Delete Comment",
+            "url": "http://127.0.0.1:8000/bog/api/comment/5/",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-02-11T18:32:19.404Z",
+            "modified": "2024-02-22T18:19:57.922Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Delete a Comment\n\n### URL format: \n    http://{host}{:port}/api/comment/{comment id}/\n\n### Method:\n>**DELETE**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "8a7a7306-fd70-442c-a3ac-9d787c256fb6",
+            "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
+            "containerId": "",
+            "name": "Add Media",
+            "url": "http://127.0.0.1:8000/blog/api/media/",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-02-22T15:02:02.666Z",
+            "modified": "2024-02-22T15:02:02.666Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "post",
+                        "value": "1"
+                    },
+                    {
+                        "name": "media_type",
+                        "value": "image"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "file",
+                        "value": "c:\\Users\\ajava\\Pictures\\iccp_pg11_A0947TEST.png"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6a70580494df50f568893a3cf3cb938d0fbeb2d3",
+                "bearerPrefix": "Token"
+            },
+            "tests": []
+        }
+    ]
+}

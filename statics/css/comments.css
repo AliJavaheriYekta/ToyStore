@@ -1,0 +1,51 @@
+/* Adjust based on your overall styles and preferences */
+
+.comment-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form fieldset {
+    margin-bottom: 15px;
+}
+
+.comment-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.comment-form textarea {
+    resize: vertical;
+}
+
+.comment-form button {
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #2980b9;
+}
+
+.comment-form .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
