@@ -1,0 +1,44 @@
+{% extends "base_blog.html" %}
+
+{#{% block page_title %}#}
+{#    <h2>Blog Posts</h2>#}
+{#{% endblock page_title %}#}
+
+<div class="flex items-center justify-between mb-4">
+    <h2 class="text-2xl font-bold text-blue-500">Blog Posts</h2>
+    <form class="inline-flex">
+        <label>
+            <input type="text" placeholder="Search posts..." class="rounded px-2 py-1">
+        </label>
+        <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">Search</button>
+    </form>
+</div>
+
+
+{% block page_content %}
+    {% block posts %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% for post in posts %}
+                <article class="mb-4">
+                    <h3 class="text-2xl font-bold mb-2">
+                        <a href="{% url 'blog_detail' post.pk %}" class="text-blue-500 hover:text-blue-700">
+                            {{ post.title }}
+                        </a>
+                    </h3>
+                    <div class="flex items-center flex-wrap">
+                        <small class="text-gray-500 mr-2">{{ post.created_at.date }}</small>
+                        <small class="ml-2">
+                            Categories:
+                            {% for category in post.category.all %}
+                                <a href="{% url 'blog_category' category.name %}" class="rounded px-2 py-1 text-gray-800 bg-gray-200 hover:bg-gray-300 ml-2">
+                                    {{ category.name }}
+                                </a>
+                            {% endfor %}
+                        </small>
+                    </div>
+                    <p class="whitespace-pre-line">{{ post.body | slice:":400" }}...</p>
+                </article>
+            {% endfor %}
+        </div>
+    {% endblock posts %}
+{% endblock page_content %}

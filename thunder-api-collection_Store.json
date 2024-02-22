@@ -1,0 +1,121 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Store",
+    "dateExported": "2024-02-22T18:20:43.995Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "cdae9c77-e92e-4dbd-9f30-e095bc53c6bb",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Get All Products",
+            "url": "http://127.0.0.1:8000/store/api/product/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-22T16:02:54.295Z",
+            "modified": "2024-02-22T16:02:54.295Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f91ba67d-16d1-418c-845e-d00a476090f4",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Add a Product",
+            "url": "http://127.0.0.1:8000/store/api/product/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-22T16:03:03.764Z",
+            "modified": "2024-02-22T16:03:03.764Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Second\",\n  \"price\": 12.2,\n  \"stock\": 15,\n  \"sold_qt\": 22,\n  \"total_qt\": 17,\n  \"description\": \"lorem ipiusim\",\n  \"category\": [1],\n  \"brand\": \"test-co\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": []
+        },
+        {
+            "_id": "944c6bc7-0f6d-426f-b94e-801656849f3c",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Get a Specific Product",
+            "url": "http://127.0.0.1:8000/store/api/product/second/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-22T17:18:38.313Z",
+            "modified": "2024-02-22T17:18:38.313Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f67544e6-675b-4b12-bc60-c4bbf468264d",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Update A Product",
+            "url": "http://127.0.0.1:8000/store/api/product/second/",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-22T17:27:10.901Z",
+            "modified": "2024-02-22T17:27:10.901Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Second\",\n  \"price\": 12.2,\n  \"stock\": 15,\n  \"sold_qt\": 22,\n  \"total_qt\": 17,\n  \"description\": \"lorem ipiusim updated!\",\n  \"category\": [1],\n  \"brand\": \"test-co\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Update a Post\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/edit\n\n### Method:\n>**PUT**\n\n### Body (JSON):\n```\n{\n  \"title\": {title},\n  \"content\": {content},\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "cca24480-dc5b-4644-b3d5-a69513ce65e7",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Parially Update A Product",
+            "url": "http://127.0.0.1:8000/store/api/product/second/",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2024-02-22T17:32:04.057Z",
+            "modified": "2024-02-22T17:32:04.057Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"description\": \"this lorem ipsium is edited! but partially :)\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Partially update a Post\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/edit\n\n### Method:\n>**PATCH**\n\n### Body (JSON):\n```\n{\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***"
+        }
+    ]
+}
