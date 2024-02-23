@@ -10,7 +10,7 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'categories'
@@ -18,10 +18,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)  # Generate slug on save
+        super().save(*args, **kwargs)
+
 
 class Brand(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    slug = models.SlugField(max_length=250, unique=True, blank=True)
     description = models.TextField()
 
     def __str__(self):

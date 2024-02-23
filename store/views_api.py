@@ -11,7 +11,7 @@ from store.models import Product, Category, Comment, Media, Brand
 from rest_framework.filters import OrderingFilter
 from .models import Product
 from .serializers import ProductSerializer, CategorySerializer, CommentSerializer, MediaSerializer, \
-    ProductCreateSerializer
+    ProductCreateSerializer, CommentCreateSerializer, MediaCreateSerializer, BrandSerializer
 
 
 class ProductByCategoryAPIView(APIView):
@@ -147,9 +147,9 @@ class StoreCategoryAPIView(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
 
     def get_queryset(self):
-        category_name = self.kwargs['category']
-        if category_name:
-            return Product.objects.filter(category__name__contains=category_name).order_by("-created_at")
+        category_slug = self.kwargs['slug']
+        if category_slug:
+            return Product.objects.filter(category__slug=category_slug).order_by("-created_at")
         return Category.objects.all()
 
     def perform_create(self, serializer):
@@ -160,13 +160,42 @@ class StoreCategoryAPIView(generics.ListCreateAPIView):
             return CategorySerializer
         return ProductSerializer
 
-    def delete(self, request, category):
+    def delete(self, request, slug):
         try:
-            category = Category.objects.get(name=category)
+            category = Category.objects.get(slug=slug)
+            name = category.name
             category.delete()  # Delete the category object
-            return Response({"message": "Category deleted successfully"}, status=204)
+            return Response({"message": "Category {} deleted successfully".format(name)}, status=204)
         except Category.DoesNotExist:
-            return Response({"error": "Category not found"}, status=404)
+            return Response({"error": "Category with slug {} not found".format(slug)}, status=404)
+
+
+class StoreBrandAPIView(generics.ListCreateAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+
+    def get_queryset(self):
+        category_slug = self.kwargs['slug']
+        if category_slug:
+            return Product.objects.filter(category__slug=category_slug).order_by("-created_at")
+        return Category.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CategorySerializer
+        return ProductSerializer
+
+    def delete(self, request, slug):
+        try:
+            category = Category.objects.get(slug=slug)
+            name = category.name
+            category.delete()  # Delete the category object
+            return Response({"message": "Category {} deleted successfully".format(name)}, status=204)
+        except Category.DoesNotExist:
+            return Response({"error": "Category with slug {} not found".format(slug)}, status=404)
 
 
 # class AddCommentAPIView(generics.CreateAPIView):
@@ -178,10 +207,10 @@ class CommentAPIView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # Add if appropriate
 
     def post(self, request):
-        serializer = CommentSerializer(data=request.data)
+        serializer = CommentCreateSerializer(data=request.data)
         if serializer.is_valid():
             comment = serializer.save(user=User.objects.get(pk=self.request.user.id),
-                                      product=Product.objects.get(pk=self.request.data['post_id']))
+                                      product=Product.objects.get(slug=self.request.data['product']))
             return Response(CommentSerializer(comment).data)
         return Response(serializer.errors, status=400)
 
@@ -196,5 +225,9 @@ class CommentAPIView(APIView):
 
 class MediaCreateView(generics.CreateAPIView):
     queryset = Media.objects.all()
-    serializer_class = MediaSerializer
+    serializer_class = MediaCreateSerializer
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(product=Product.objects.get(slug=self.request.data['product']))
+                        # creator=self.request.user)

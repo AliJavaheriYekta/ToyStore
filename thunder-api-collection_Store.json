@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Store",
-    "dateExported": "2024-02-22T18:20:43.995Z",
+    "dateExported": "2024-02-23T11:45:19.305Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -33,7 +33,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-02-22T16:03:03.764Z",
-            "modified": "2024-02-22T16:03:03.764Z",
+            "modified": "2024-02-23T09:42:46.075Z",
             "headers": [],
             "params": [],
             "body": {
@@ -46,7 +46,8 @@
                 "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
                 "bearerPrefix": "Token"
             },
-            "tests": []
+            "tests": [],
+            "docs": "## Create a new Product\n\n### URL format: \n    http://{host}{:port}/store/api/product/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"title\": {title :: string},\n  \"price\": {price :: positive float},\n  \"stock\": {stock :: positive int},\n  \"sold_qt\": {sold quantity :: positive int},\n  \"total_qt\": {total quantity :: positive int},\n  \"description\": {description :: string},\n  \"category\": {categories (id) :: list} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***"
         },
         {
             "_id": "944c6bc7-0f6d-426f-b94e-801656849f3c",
@@ -71,7 +72,7 @@
             "_id": "f67544e6-675b-4b12-bc60-c4bbf468264d",
             "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
             "containerId": "",
-            "name": "Update A Product",
+            "name": "Update a Product",
             "url": "http://127.0.0.1:8000/store/api/product/second/",
             "method": "PUT",
             "sortNum": 40000,
@@ -96,7 +97,7 @@
             "_id": "cca24480-dc5b-4644-b3d5-a69513ce65e7",
             "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
             "containerId": "",
-            "name": "Parially Update A Product",
+            "name": "Parially Update a Product",
             "url": "http://127.0.0.1:8000/store/api/product/second/",
             "method": "PATCH",
             "sortNum": 50000,
@@ -116,6 +117,200 @@
             },
             "tests": [],
             "docs": "## Partially update a Post\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/edit\n\n### Method:\n>**PATCH**\n\n### Body (JSON):\n```\n{\n  \"category\": {categories (id)} // example: [1,2]\n}\n```\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***"
+        },
+        {
+            "_id": "8dfac149-4d6f-4cfb-814f-163011e1a61e",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Delete a Product",
+            "url": "http://127.0.0.1:8000/store/api/product/second/",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-23T09:03:19.282Z",
+            "modified": "2024-02-23T09:03:19.282Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Deleting a Post based on it's id\n\n### URL format: \n    http://{host}{:port}/api/post/{post id}/\n\n### Method:\n>**DELETE**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n"
+        },
+        {
+            "_id": "1e55ba4b-8396-4fb9-b50b-bd5df0bc0a11",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Delte a Product Category",
+            "url": "http://127.0.0.1:8000/store/api/category/secondhanded/",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-02-23T09:31:48.864Z",
+            "modified": "2024-02-23T09:31:48.864Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Delete a Category\n\n### URL format: \n    http://{host}{:port}/api/category/{category name}/\n\n### Method:\n>**DELETE**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "2c24dccf-0acd-44a1-8b20-f64fe8aa1898",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Add Product Category",
+            "url": "http://127.0.0.1:8000/store/api/category/",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-02-23T09:33:56.413Z",
+            "modified": "2024-02-23T09:33:56.413Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"SecondHanded\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Add A new Category\n\n### URL format: \n    http://{host}{:port}/api/category/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"name\": {name}\n}\n```\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "f1a0c524-0c0c-49d2-a5bc-a9a4ea9f290b",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Products by Category",
+            "url": "http://127.0.0.1:8000/store/api/category/Test/",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-02-23T09:38:16.771Z",
+            "modified": "2024-02-23T09:38:16.771Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Posts by Category\n\n### URL format: \n    http://{host}{:port}/api/category/{category name}/\n\n### Method:\n>**GET**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "233355a6-a3ab-4272-8205-3494c0989234",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Add a Product Comment",
+            "url": "http://127.0.0.1:8000/store/api/comment/",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-02-23T09:58:18.025Z",
+            "modified": "2024-02-23T09:58:18.025Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"content\": \"That is great! Loved it!\",\n  \"product\": \"second\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Add a Comment to a Post\n\n### URL format: \n    http://{host}{:port}/api/comment/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"content\": {content},\n   \"post_id\": {post id}\n}\n```\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "a333aae8-fc4e-4456-b346-9eaf50639955",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Add Media Copy",
+            "url": "http://127.0.0.1:8000/store/api/media/",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-02-23T10:23:14.133Z",
+            "modified": "2024-02-23T10:34:51.997Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "product",
+                        "value": "second"
+                    },
+                    {
+                        "name": "media_type",
+                        "value": "image"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "file",
+                        "value": "d:\\Data\\Source_Codes\\Courses\\Daneshkar\\Final Projects\\resources\\watch1.jpg"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": []
+        },
+        {
+            "_id": "dfb3e762-6db7-4ac8-9987-d2aeaa34385f",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Add Brand",
+            "url": "http://127.0.0.1:8000/store/api/brand/",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-02-23T11:37:45.658Z",
+            "modified": "2024-02-23T11:39:13.604Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Iranian\",\n  \"description\": \"Iranian Company From Iran!\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Add A new Category\n\n### URL format: \n    http://{host}{:port}/api/category/\n\n### Method:\n>**POST**\n\n### Body (JSON):\n```\n{\n  \"name\": {name}\n}\n```\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
+        },
+        {
+            "_id": "9691cc5e-4ece-4a9a-b237-0d6dec34c84b",
+            "colId": "1ceb9565-9e06-4a38-8564-7b6ad53dd8fc",
+            "containerId": "",
+            "name": "Products by Brand",
+            "url": "http://127.0.0.1:8000/store/api/brand/test-co/",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-02-23T11:39:37.561Z",
+            "modified": "2024-02-23T11:40:20.562Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "899c05271f9b13e076a52282bfd980a505ca62d1",
+                "bearerPrefix": "Token"
+            },
+            "tests": [],
+            "docs": "## Posts by Category\n\n### URL format: \n    http://{host}{:port}/api/category/{category name}/\n\n### Method:\n>**GET**\n\n### Authentication: \n - Needed \n - Bearer Token\n - Format: ***Token {token string}***\n\n"
         }
     ]
 }

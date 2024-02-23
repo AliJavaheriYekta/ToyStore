@@ -8,7 +8,23 @@ class MediaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MediaCreateSerializer(serializers.ModelSerializer):
+    product = serializers.SlugField(read_only=True)
+    # creator = serializers.ReadOnlyField(source='user.id')
+    class Meta:
+        model = Media
+        fields = '__all__'
+
+
 class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
+class CommentCreateSerializer(serializers.ModelSerializer):
+    product = serializers.SlugField(read_only=True)
+    user = serializers.ReadOnlyField(source='user.id')
     class Meta:
         model = Comment
         fields = '__all__'
