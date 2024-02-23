@@ -17,7 +17,7 @@ urlpatterns = [
     path('api/product/<str:slug>/', api.ProductDetailAPIView.as_view(http_method_names=['get', 'delete', 'put', 'patch']),
          name='api-store-index'),
 
-    path('api/category/<str:category>/',
+    path('api/category/<str:slug>/',
          api.StoreCategoryAPIView.as_view(http_method_names=['get', 'delete']), name='store-category'),
     path('api/category/',
          api.StoreCategoryAPIView.as_view(http_method_names=['post']), name='store-category-create'),
@@ -26,4 +26,9 @@ urlpatterns = [
     path('api/comment/<int:pk>/', api.CommentAPIView.as_view(http_method_names=['delete']), name='api-delete-comment'),
 
     path('api/media/', api.MediaCreateView.as_view(), name='media-upload'),
+
+    path('api/brand/<str:slug>/',
+         api.StoreBrandAPIView.as_view(http_method_names=['get', 'delete']), name='store-brand'),
+    path('api/brand/',
+         api.StoreBrandAPIView.as_view(http_method_names=['post']), name='store-brand-create'),
 ]

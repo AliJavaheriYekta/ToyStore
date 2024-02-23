@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Blog",
-    "dateExported": "2024-02-22T18:20:17.258Z",
+    "dateExported": "2024-02-23T11:45:01.414Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -9,7 +9,7 @@
             "_id": "651b531e-83a2-42e4-99cc-5123c4d7288c",
             "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
             "containerId": "",
-            "name": "Add Category",
+            "name": "Add a Blog Category",
             "url": "http://127.0.0.1:8000/blog/api/category/",
             "method": "POST",
             "sortNum": 35000,
@@ -34,7 +34,7 @@
             "_id": "c1d344cd-4bfe-42db-91f0-20b8bd629c05",
             "colId": "72591259-01bc-4fd4-a8df-ac68b122cd06",
             "containerId": "",
-            "name": "Delete a Category",
+            "name": "Delete a Blog Category",
             "url": "http://127.0.0.1:8000/blog/api/category/LALA/",
             "method": "DELETE",
             "sortNum": 37500,
