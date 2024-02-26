@@ -1,0 +1,32 @@
+{% load static %}
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Toy Store</title>
+{#    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">#}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/comments.css' %}">
+</head>
+<body>
+    <div class="container mx-auto">
+        <header class="mb-4">
+            <nav class="inline-flex items-center space-x-4 mr-auto">
+                <h1 class="text-4xl font-bold mb-4">Toy Store</h1>
+                <a href="{% url "blog:blog_index" %}" class="text-blue-500 hover:text-blue-700">Blog</a>
+                <a href="{% url "store:store_index" %}" class="text-blue-500 hover:text-blue-700">Store</a>
+                <a href="{% url "cart:cart_detail" %}" class="text-blue-500 hover:text-blue-700">Cart</a>
+            </nav>
+            <hr>
+        </header>
+
+        <main class="mt-4">
+            {% block page_title %}{% endblock page_title %}
+            {% block page_content %}{% endblock page_content %}
+            {% block page_code %}{% endblock page_code %}
+        </main>
+    </div>
+</body>
+</html>

@@ -8,6 +8,8 @@ from . import views_api as api
 from .views import register
 from .views_api import PostCategoryAssignView
 
+app_name = 'blog'
+
 urlpatterns = [
     path("", views.blog_index, name="blog_index"),
     path("post/<int:pk>/", views.blog_detail, name="blog_detail"),

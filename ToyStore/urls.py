@@ -20,11 +20,15 @@ from django.urls import path, include
 
 from ToyStore import settings
 
+app_name = 'ToyStore'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
     path("store/", include("store.urls")),
-    path("auth/", include("authapp.urls")),
+    # path("auth/", include("authapp.urls")),
+    path("", include("authapp.urls")),
+    path("cart/", include("cart.urls")),
 ]
 
 # Serve media files during development

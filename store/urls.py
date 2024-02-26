@@ -7,6 +7,8 @@ from . import views_api as api
 
 # from .views import register
 
+app_name = 'store'
+
 urlpatterns = [
     path("", views.product_index, name="store_index"),
     path("product/<str:slug>/", views.product_detail, name="product_detail"),

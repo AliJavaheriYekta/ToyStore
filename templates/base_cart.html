@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    <h2 class="text-4xl font-bold mb-4" style="color: #cccccc">Cart</h2>
+{% endblock page_title %}
+{% block page_content %}{% endblock page_content %}
+
+{% block page_code %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const messageContainer = document.getElementById('messages');
+
+          if (messageContainer) {
+            const latestMessage = document.querySelector('#messages li:last-child');
+
+            if (!latestMessage) {
+              messageContainer.classList.add('hidden'); // Hide if no messages
+            } else {
+              // Show and fade-out the latest message
+              messageContainer.classList.remove('hidden');
+              messageContainer.classList.add('fade-in'); // Add fade-in for initial display
+
+              setTimeout(() => {
+                messageContainer.classList.remove('fade-in');
+                messageContainer.classList.add('fade-out'); // Fade-out after 3 seconds
+              }, 3000);
+            }
+          }
+        });
+        {#const messageContainer = document.getElementById('messages');#}
+        {#console.log('hello to you!')#}
+        {#if (messageContainer) {#}
+        {#  const latestMessage = document.querySelector('#messages li:last-child');#}
+        {##}
+        {#  if (!latestMessage) {#}
+        {#    messageContainer.classList.add('hidden');#}
+        {#  } else {#}
+        {#    // Remove previous content before displaying the latest message#}
+        {#    messageContainer.classList.remove('hidden');#}
+        {#    messageContainer.classList.add('fade-in');#}
+        {#    messageContainer.innerHTML = '';#}
+        {#    messageContainer.appendChild(latestMessage);#}
+        {##}
+        {#    setTimeout(() => {#}
+        {#      messageContainer.classList.remove('fade-in');#}
+        {#      messageContainer.classList.add('fade-out');#}
+        {#      messageContainer.classList.add('hidden');#}
+        {#    }, 3000); // Timeout after 3 seconds#}
+        {#  }#}
+        {#}#}
+    </script>
+{% endblock page_code %}

@@ -19,7 +19,7 @@
             {% for product in products %}
                 <article class="mb-4">
                     <h3 class="text-2xl font-bold mb-2">
-                        <a href="{% url 'product_detail' product.slug %}" class="text-blue-500 hover:text-blue-700">
+                        <a href="{% url 'store:product_detail' product.slug %}" class="text-blue-500 hover:text-blue-700">
                             {{ product.title }}
                         </a>
                     </h3>
@@ -28,7 +28,7 @@
                         <small class="ml-2">
                             Categories:
                             {% for category in product.category.all %}
-                                <a href="{% url 'blog_category' category.name %}" class="rounded px-2 py-1 text-gray-800 bg-gray-200 hover:bg-gray-300 ml-2">
+                                <a href="{% url 'blog:blog_category' category.name %}" class="rounded px-2 py-1 text-gray-800 bg-gray-200 hover:bg-gray-300 ml-2">
                                     {{ category.name }}
                                 </a>
                             {% endfor %}
