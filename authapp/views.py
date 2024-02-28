@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
@@ -37,3 +37,13 @@ def login_view(request):
             # Handle login failure
             pass
     return render(request, 'login.html')
+
+
+def logout_view(request):
+    """Logs out the current user and redirects to the home page."""
+    if request.method == 'POST':
+        res = logout(request)
+        return redirect('/')
+    else:
+        logout(request)
+        return render(request, 'login.html', {'message': 'Please use POST request to logout.'})

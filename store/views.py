@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -6,6 +7,7 @@ from store.forms import CommentForm
 from store.models import Product, Comment, Category
 
 
+@login_required
 def product_index(request):
     available_quantity = F('stock')
     products = Product.objects.annotate(available_quantity=available_quantity).order_by("-created_at")

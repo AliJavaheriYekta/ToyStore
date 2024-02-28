@@ -19,13 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from ToyStore import settings
+from .local_settings import ADMIN_PATH
 
 app_name = 'ToyStore'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f'{ADMIN_PATH}/', admin.site.urls),
     path('blog/', include("blog.urls")),
-    path("store/", include("store.urls")),
+    path("", include("store.urls")),
     # path("auth/", include("authapp.urls")),
     path("", include("authapp.urls")),
     path("cart/", include("cart.urls")),

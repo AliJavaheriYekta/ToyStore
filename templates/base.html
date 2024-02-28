@@ -12,15 +12,37 @@
 </head>
 <body>
     <div class="container mx-auto">
-        <header class="mb-4">
-            <nav class="inline-flex items-center space-x-4 mr-auto">
-                <h1 class="text-4xl font-bold mb-4">Toy Store</h1>
-                <a href="{% url "blog:blog_index" %}" class="text-blue-500 hover:text-blue-700">Blog</a>
-                <a href="{% url "store:store_index" %}" class="text-blue-500 hover:text-blue-700">Store</a>
-                <a href="{% url "cart:cart_detail" %}" class="text-blue-500 hover:text-blue-700">Cart</a>
+{#        <header class="mb-4">#}
+{#            <nav class="inline-flex items-center space-x-4 mr-auto ml-auto">#}
+{#                <h1 class="text-4xl font-bold mb-4">Toy Store</h1>#}
+{#                <a href="{% url "blog:blog_index" %}" class="text-blue-500 hover:text-blue-700">Blog</a>#}
+{#                <a href="{% url "store:store_index" %}" class="text-blue-500 hover:text-blue-700">Store</a>#}
+{#                <a href="{% url "cart:cart_detail" %}" class="text-white bg-blue-500 hover:text-blue-700 px-3 py-2 rounded-md font-medium">Cart</a>#}
+{#            </nav>#}
+{#            <nav class="inline-flex items-center justify-end">#}
+{#              {% if request.user.is_authenticated %}#}
+{#                <a href="{% url 'auth:logout' %}" class="text-white bg-yellow-500 hover:bg-yellow-700 px-3 py-2 rounded-md font-medium">Logout</a>#}
+{#              {% endif %}#}
+{#            </nav>#}
+{#        </header>#}
+        <div class="container mx-auto">
+          <header class="mb-4 flex items-center justify-between"> <nav class="inline-flex items-center space-x-4"> <h1 class="text-4xl font-bold mb-4">Toy Store</h1>
+              <a href="{% url "blog:blog_index" %}" class="text-blue-500 hover:text-blue-700">Blog</a>
+              <a href="{% url "store:store_index" %}" class="text-blue-500 hover:text-blue-700">Store</a>
+              <a href="{% url "cart:cart_detail" %}" class="text-blue-500 hover:text-blue-700">Cart</a>
+{#              <a href="{% url "cart:cart_detail" %}" class="text-white bg-blue-500 hover:text-blue-700 px-3 py-2 rounded-md font-medium">Cart</a>#}
             </nav>
+
+            <nav class="ml-auto">
+              {% if request.user.is_authenticated %}
+                <a href="{% url 'auth:logout' %}" class="text-white bg-yellow-500 hover:bg-yellow-700 px-3 py-2 rounded-md font-medium">Logout</a>
+              {% endif %}
+            </nav>
+
             <hr>
-        </header>
+          </header>
+        </div>
+
 
         <main class="mt-4">
             {% block page_title %}{% endblock page_title %}
