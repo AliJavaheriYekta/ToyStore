@@ -1,9 +1,15 @@
+from logging import getLogger
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from authapp.serializers import UserSerializer
+from django.contrib.messages import info, error
 
 
 # Create your views here.
@@ -47,3 +53,44 @@ def logout_view(request):
     else:
         logout(request)
         return render(request, 'login.html', {'message': 'Please use POST request to logout.'})
+
+
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Registration successful!'}, status=201)
+        else:
+            return Response(serializer.errors, status=400)
+
+
+logger = getLogger(__name__)
+
+
+def register_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+
+        # User registration logic
+        if password != password2:
+            error(request, 'Passwords do not match')
+            return render(request, 'register.html')
+
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            login(request, user)
+            info(request, 'Registration successful!')
+            logger.info(f'User {username} registered successfully.')
+            # return redirect('/')
+            return redirect('/accounts/login')
+        except Exception as e:
+            error(request, f'Registration failed: {e}')
+            logger.error(f'Registration failed for {username}: {e}')
+            return render(request, 'register.html')
+
+    return render(request, 'register.html')
