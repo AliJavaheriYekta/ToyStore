@@ -17,16 +17,17 @@ class CartItem(models.Model):
 
 
 class Cart(models.Model):
+    STATUS_CHOICES = (
+        ('pending', 'Pending'),
+        ('clear', 'Clear')
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(Product, through='CartItem', related_name='cart', blank=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     # created_at = models.DateTimeField(auto_now_add=True)
     placed_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     payment_id = models.CharField(max_length=255, null=True, blank=True)
-    status = models.CharField(max_length=255, choices=[
-        ('pending', 'Pending'),
-        ('clear', 'Clear')
-    ], default='clear', null=True, blank=True)
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='clear', null=True, blank=True)
     transactions = models.ForeignKey('financial.OrderTransaction', related_name='card_transaction',
                                      on_delete=models.SET_NULL, null=True, blank=True)
 

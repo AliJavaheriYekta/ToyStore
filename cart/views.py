@@ -20,7 +20,8 @@ def add_to_cart(request, product_id):
         cart, _ = Cart.objects.get_or_create(user=request.user)
         if cart.status.lower() != 'pending':
             cart.status = 'pending'
-        existing_item = cart.items.filter(cart__cartitem__product=product).first()
+        # existing_item = cart.items.filter(cart__cartitem__product=product).first()
+        existing_item = cart.cartitem_set.filter(product=product).first()
         quantity = int(request.POST['quantity'])
         if existing_item:
             existing_item.quantity += quantity

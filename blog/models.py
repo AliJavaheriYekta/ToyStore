@@ -50,7 +50,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
-        ordering = ('created_at', )
+        ordering = ('created_at',)
 
     def __str__(self):
         return f'{self.updated_at.ctime()} // --{self.user}-- on --{self.post}--'
@@ -64,10 +64,11 @@ def media_upload_path(instance, filename):
 
 class Media(models.Model):
     post = models.ForeignKey(Post, related_name='media', on_delete=models.CASCADE)
+    choices = ('image', 'video')  # Add
     media_type = models.CharField(max_length=10, null=False, choices=[('image', 'Image'), ('video', 'Video')])
     file = models.FileField(upload_to=media_upload_path,
-                            validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif', 'mp4'])])
+                            validators=[
+                                FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif', 'mp4'])])
 
     def __str__(self):
         return f'{self.post.title} :: --{self.media_type}--'
-

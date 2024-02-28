@@ -98,40 +98,15 @@ def media_upload_path(instance, filename):
 
 
 class Media(models.Model):
+    MEDIA_TYPE_CHOICES = (
+        ('image', 'Image'),
+        ('video', 'Video')
+    )
     product = models.ForeignKey(Product, related_name='media', on_delete=models.CASCADE)
-    media_type = models.CharField(max_length=10, choices=[('image', 'Image'), ('video', 'Video')])
+    media_type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES)
     file = models.FileField(upload_to=media_upload_path)
     filesize = models.BigIntegerField(blank=True, null=True)  # Add filesize
     resolution = models.CharField(max_length=20, blank=True, null=True)  # Add resolution
 
     def __str__(self):
         return f'{self.product.title} - {self.media_type}: {self.file.name}'
-
-# class Media(models.Model):
-#     product = models.ForeignKey(Product, related_name='media', on_delete=models.CASCADE)
-#     media_type = models.CharField(max_length=10, choices=[('image', 'Image'), ('video', 'Video')])
-#
-#     def clean_file(self):
-#         media_type = self.cleaned_data.get('media_type')
-#         file = self.cleaned_data.get('file')
-#
-#         if media_type == 'image':
-#             extensions = ['jpg', 'jpeg', 'png', 'gif']
-#             validator = FileExtensionValidator(allowed_extensions=extensions)
-#             validator(file)  # Raise ValidationError if not an image
-#         elif media_type == 'video':
-#             extensions = ['mp4']
-#             validator = FileExtensionValidator(allowed_extensions=extensions)
-#             validator(file)  # Raise ValidationError if not a video
-#         else:
-#             raise ValidationError('Invalid media type.')
-#     file = models.FileField(upload_to=media_upload_path,
-#                             validators=[
-#                                 FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif']),
-#                                 FileExtensionValidator(allowed_extensions=['mp4']),
-#                             ])
-#     filesize = models.BigIntegerField(blank=True, null=True)  # Add filesize
-#     resolution = models.CharField(max_length=20, blank=True, null=True)  # Add resolution
-#
-#     def __str__(self):
-#         return f'{self.product.title}'
