@@ -29,6 +29,7 @@ urlpatterns = [
     # path("auth/", include("authapp.urls")),
     path("", include("authapp.urls")),
     path("cart/", include("cart.urls")),
+    path("financial/", include("financial.urls")),
 ]
 
 # Serve media files during development

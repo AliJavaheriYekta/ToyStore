@@ -11,10 +11,21 @@ class CartItemSerializer(serializers.ModelSerializer):
         model = CartItem
         fields = ('id', 'product', 'quantity')
 
+    def get_product_name(self, obj):
+        return obj.product.name
+
 
 class CartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = Cart
-        fields = ('id', 'items', 'total_price')
+        fields = ('id', 'payment_id', 'status', 'total_price', 'items')
+
+
+# class CartSerializer(serializers.ModelSerializer):
+#     items = CartItemSerializer(many=True, read_only=True)
+#
+#     class Meta:
+#         model = Cart
+#         fields = ('id', 'user', 'placed_at', 'total_price', 'payment_id', 'status', 'items')

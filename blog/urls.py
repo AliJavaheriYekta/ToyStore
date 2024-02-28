@@ -5,8 +5,6 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 from . import views
 from . import views_api as api
-from .views import register
-from .views_api import PostCategoryAssignView
 
 app_name = 'blog'
 

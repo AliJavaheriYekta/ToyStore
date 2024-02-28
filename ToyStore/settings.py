@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'authapp.apps.AuthConfig',
     'cart.apps.CartConfig',
+    'financial.apps.FinancialConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

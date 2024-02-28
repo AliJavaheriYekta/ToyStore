@@ -1,0 +1,30 @@
+{% extends 'base_store.html' %}
+
+{% block page_content %}
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-semibold mb-8">Checkout</h1>
+
+  <div class="bg-gray-100 rounded-lg p-4 mb-8">
+    <h2 class="text-lg font-semibold mb-2">Cart Summary</h2>
+    <p class="text-gray-700 mb-1">Items: {{ cart.items.count }}</p>
+    <p class="text-gray-700">Total Price: {{ cart.total_price }}</p>
+  </div>
+
+  <form action="{% url 'financial:create_order' cart.id %}" method="post">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      <label for="payment_method" class="block text-sm font-medium text-gray-700">Payment Method:</label>
+      <select id="payment_method" name="payment_method" class="w-full rounded-md border border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <option value="credit_card">Credit Card</option>
+        <option value="paypal">PayPal</option>
+        </select>
+    </div>
+
+    <div class="flex justify-between">
+      <button type="submit" class="btn btn-primary">Proceed</button>
+      <a href="{% url 'cart:cart_detail' %}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock page_content %}

@@ -2,13 +2,6 @@
 
 {% block page_content %}
 <div class="container mx-auto py-8">
-  <div id="messages" class="fixed bottom-0 right-0 z-50 flex items-center justify-center w-full h-12 px-4 bg-green-500 text-white rounded-t-md">
-    <ul class="list-disc">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  </div>
   <h1 class="text-3xl font-bold mb-4">Your Cart</h1>
 
   <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
@@ -17,13 +10,13 @@
         <th class="p-4">Product</th>
         <th class="p-4">Quantity</th>
         <th class="p-4">Price</th>
-        <th class="p-4">Remove</th>
+        <th class="p-4">Action</th>
       </tr>
     </thead>
     <tbody>
       {% for cart_item in cart_items %}
       <tr class="hover:bg-gray-200">
-        <td class="p-4">{{ cart_item.product.name }}</td>
+        <td class="p-4">{{ cart_item.product.title }}</td>
         <td class="p-4 flex items-center">
           {{ cart_item.quantity }}
           </td>
@@ -38,7 +31,10 @@
       <tr class="bg-gray-100 text-right font-medium">
         <td colspan="2" class="p-4"><strong>Total:</strong></td>
         <td class="p-4"><strong>{{ cart.total_price }}</strong></td>
-        <td class="p-4"></td>
+        <td class="p-4">
+          <a href="{% url 'financial:checkout' cart.id %}" class="inline-block px-4 py-2 bg-blue-500 text-white
+           font-bold rounded hover:bg-blue-700">Checkout</a>
+        </td>
       </tr>
     </tfoot>
   </table>

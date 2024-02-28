@@ -25,8 +25,62 @@
         <main class="mt-4">
             {% block page_title %}{% endblock page_title %}
             {% block page_content %}{% endblock page_content %}
-            {% block page_code %}{% endblock page_code %}
+{#            {% block page_code %}{% endblock page_code %}#}
         </main>
+        {% block messages %}
+            <div id="messages" class="fixed bottom-0 right-0 z-50 flex items-center justify-center w-full h-12 px-4 bg-green-500 text-white rounded-t-md">
+                <ul class="list-disc">
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+            </div>
+        {% endblock messages %}
     </div>
+    {% block page_code %}
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const messageContainer = document.getElementById('messages');
+
+              if (messageContainer) {
+                const latestMessage = document.querySelector('#messages li:last-child');
+
+                if (!latestMessage) {
+                  messageContainer.classList.add('hidden'); // Hide if no messages
+                } else {
+                  // Show and fade-out the latest message
+                  messageContainer.classList.remove('hidden');
+                  messageContainer.classList.add('fade-in'); // Add fade-in for initial display
+
+                  setTimeout(() => {
+                    messageContainer.classList.remove('fade-in');
+                    messageContainer.classList.add('fade-out'); // Fade-out after 3 seconds
+                  }, 3000);
+                }
+              }
+            });
+            {#const messageContainer = document.getElementById('messages');#}
+            {#console.log('hello to you!')#}
+            {#if (messageContainer) {#}
+            {#  const latestMessage = document.querySelector('#messages li:last-child');#}
+            {##}
+            {#  if (!latestMessage) {#}
+            {#    messageContainer.classList.add('hidden');#}
+            {#  } else {#}
+            {#    // Remove previous content before displaying the latest message#}
+            {#    messageContainer.classList.remove('hidden');#}
+            {#    messageContainer.classList.add('fade-in');#}
+            {#    messageContainer.innerHTML = '';#}
+            {#    messageContainer.appendChild(latestMessage);#}
+            {##}
+            {#    setTimeout(() => {#}
+            {#      messageContainer.classList.remove('fade-in');#}
+            {#      messageContainer.classList.add('fade-out');#}
+            {#      messageContainer.classList.add('hidden');#}
+            {#    }, 3000); // Timeout after 3 seconds#}
+            {#  }#}
+
+        </script>
+    {% endblock page_code %}
 </body>
 </html>

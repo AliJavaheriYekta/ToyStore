@@ -3,6 +3,9 @@ from os.path import join
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
+
+
 # Create your models here.
 
 
@@ -18,6 +21,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=250, unique=True, blank=True)
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ManyToManyField("Category", related_name="posts")
@@ -27,6 +31,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)  # Generate slug on save
+        super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
@@ -49,7 +58,7 @@ class Comment(models.Model):
 
 def media_upload_path(instance, filename):
     # Construct the upload path relative to the 'media' directory
-    return join('blog', instance.product.slug, filename)
+    return join('blog', instance.post.slug, filename)
     # return f'blog/{instance.id}/{filename}'
 
 
