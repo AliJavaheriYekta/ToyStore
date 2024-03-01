@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from ToyStore.local_settings import ADMIN_PATH
 
 from authapp.serializers import UserSerializer
 from django.contrib.messages import info, error
@@ -19,24 +20,33 @@ def register(request):
     password = request.data.get('password')
     if username is not None and password is not None:
         user = User.objects.create_user(username, password=password)
-        token = Token.objects.create(user=user)
-        return Response({'token': token.key})
+        if user:
+            return Response({'success': 'User registered!'})
+        # token = Token.objects.create(user=user)
+        # return Response({'token': token.key})
+        else:
+            return Response({'error': 'User with this credential does not exist!'})
     else:
         return Response({'error': 'Username and password are required'})
 
 
 def login_view(request):
+    print("hey")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            try:
+                Token.objects.get(user=user)
+            except:
+                Token.objects.create(user=user)
             # Redirect based on user role or request parameter
             if request.GET.get('next'):
                 return redirect(request.GET['next'])
             elif user.is_staff:
-                return redirect('/admin/')
+                return redirect(f'/{ADMIN_PATH}/')
             else:
                 return redirect('/blog/')
         else:
@@ -48,11 +58,12 @@ def login_view(request):
 def logout_view(request):
     """Logs out the current user and redirects to the home page."""
     if request.method == 'POST':
-        res = logout(request)
+        logout(request)
         return redirect('/')
     else:
         logout(request)
-        return render(request, 'login.html', {'message': 'Please use POST request to logout.'})
+        return redirect('/accounts/login')
+        # return render(request, 'login.html', {'message': 'Please use POST request to logout.'})
 
 
 class RegisterView(APIView):

@@ -1,11 +1,23 @@
 from rest_framework import serializers
+
+from ToyStore import local_settings
 from .models import Product, Category, Brand, Media, Comment
 
 
 class MediaSerializer(serializers.ModelSerializer):
+    file_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Media
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ('id', 'product', 'media_type', 'filesize', 'resolution', 'file_url')
+
+    def get_file_url(self, obj):
+        if obj.file:
+            # Build the URL using your preferred approach
+            url = f"{local_settings.SERVER_URL}/{local_settings.MEDIA_URL}{obj.file.name}"  # Example: relative path
+            return url
+        return None  # Return None for missing files
 
 
 class MediaCreateSerializer(serializers.ModelSerializer):
@@ -43,7 +55,7 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    categories = CategorySerializer(many=True, read_only=True)
+    category = CategorySerializer(many=True, read_only=True)
     brand = BrandSerializer(read_only=True)
     creator = serializers.ReadOnlyField(source='creator.username')
     media = MediaSerializer(many=True, read_only=True)

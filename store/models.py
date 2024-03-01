@@ -2,10 +2,8 @@ from os.path import join
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
-
-
-# Create your models here.
 
 
 class Category(models.Model):
@@ -109,4 +107,20 @@ class Media(models.Model):
     resolution = models.CharField(max_length=20, blank=True, null=True)  # Add resolution
 
     def __str__(self):
+        if self.file:
+            # Build the URL using your preferred approach (e.g., absolute URL or relative path)
+            url = f"media/{self.file.name}"  # Example: relative path
+            return f"{self.product.title} - {self.media_type}: {url}"
         return f'{self.product.title} - {self.media_type}: {self.file.name}'
+
+    @property
+    def file_url(self):
+        """
+        Returns the absolute URL of the media file using reverse URL lookup.
+        """
+        if self.file:
+            url_name = 'media-' + self.file.name.replace('\\',
+                                                         '/')  # Replace backslashes with forward slashes for path consistency
+            return reverse(url_name)
+        return None
+

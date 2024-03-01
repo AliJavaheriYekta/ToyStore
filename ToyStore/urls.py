@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from ToyStore import settings
+from ToyStore import settings, local_settings
 from .local_settings import ADMIN_PATH
 
 app_name = 'ToyStore'
@@ -35,4 +35,4 @@ urlpatterns = [
 
 # Serve media files during development
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(local_settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
